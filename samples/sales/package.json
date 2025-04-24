@@ -1,0 +1,76 @@
+{
+  "name": "sales-plan-app",
+  "version": "1.0.0",
+  "description": "销售计划管理应用",
+  "repository": "<请添加您的仓库地址>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@sap/cds": "^8",
+    "express": "^4",
+    "@sap/xssec": "^3",
+    "passport": "^0.6.0"
+  },
+  "devDependencies": {
+    "sqlite3": "^5.0.2"
+  },
+  "scripts": {
+    "start": "cds run"
+  },
+  "cds": {
+    "requires": {
+      "db": {
+        "kind": "sql",
+        "[production]": {
+          "kind": "hana"
+        },
+        "[development]": {
+          "kind": "sqlite",
+          "credentials": {
+            "database": ":memory:"
+          }
+        }
+      },
+      "auth": {
+        "kind": "mocked",
+        "users": {
+          "alice": {
+            "password": "pass",
+            "roles": ["viewer", "editor", "admin"]
+          },
+          "bob": {
+            "password": "pass",
+            "roles": ["viewer", "editor"],
+            "attr": {
+              "region": "东区",
+              "department": "销售部"
+            }
+          },
+          "charlie": {
+            "password": "pass",
+            "roles": ["viewer"],
+            "attr": {
+              "region": "西区",
+              "department": "市场部" 
+            }
+          }
+        }
+      },
+      "uaa": {
+        "kind": "xsuaa-service",
+        "credentials": {
+          "xsappname": "sales-plan-app"
+        }
+      }
+    },
+    "hana": {
+      "deploy-format": "hdbtable"
+    },
+    "serving": {
+      "app": {
+        "to": "app",
+        "from": "app"
+      }
+    }
+  }
+} 

@@ -1,0 +1,41 @@
+# Dependencies
+node_modules/
+
+# Compiled output
+dist/
+build/
+.gen/
+_out/
+gen/
+target/
+
+# Logs and databases
+*.log
+*.sqlite
+*.db
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+default-env.json
+connection.properties
+.cdsrc-private.json
+
+# System files
+.DS_Store
+Thumbs.db
+
+# IDE specific files
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+
+# Generated files
+@types/
+@cds-models/
+*.mtar
+mta_archives/ 
